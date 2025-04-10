@@ -20,85 +20,64 @@ public class Entrance {
     }
 
     public static byte valueByte(String message) {
-        boolean quit = false;
-        String resp = "";
-        byte answer = 0;
+
         do {
-            resp = valueString(message);
+            String resp = valueString(message);
             try {
-                answer = Byte.parseByte(resp);
-                quit = true;
+                return Byte.parseByte(resp);
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("Error: " + e);
             }
-        } while (!quit);
-        return answer;
+        } while (true);
     }
 
     public static int valueInt(String message) {
-        boolean quit = false;
-        String resp = "";
-        int answer = 0;
+
         do {
-            resp = valueString(message);
+            String resp = valueString(message);
             try {
-                answer = Integer.parseInt(resp);
-                quit = true;
+                return Integer.parseInt(resp);
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("Error: " + e);
             }
-        } while (!quit);
-        return answer;
+        } while (true);
     }
 
     public static float valueFloat(String message) {
-        boolean quit = false;
-        String resp = "";
-        float answer = 0;
+
         do {
-            resp = valueString(message);
+            String resp = valueString(message);
             try {
-                answer = Float.parseFloat(resp);
-                quit = true;
+                return Float.parseFloat(resp);
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("Error: " + e);
             }
-        } while (!quit);
-        return answer;
+        } while (true);
     }
 
     public static double valueDouble(String message) {
-        boolean quit = false;
-        String resp = "";
-        double answer = 0;
+
         do {
-            resp = valueString(message);
+            String resp = valueString(message);
             try {
-                answer = Double.parseDouble(resp);
-                quit = true;
+                return Double.parseDouble(resp);
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("Error: " + e);
             }
-        } while (!quit);
-        return answer;
+        } while (true);
     }
 
     public static char valueChar(String message) {
-        boolean quit = false;
-        String resp = "";
-        char answer = ' ';
 
         do {
-            resp = valueString(message);
+            String resp = valueString(message);
             try {
                 lenghtChar(resp.length());
-                answer = resp.charAt(0);
-                quit = true;
+                return resp.charAt(0);
             } catch (LengthCharException e) {
                 System.out.println("Error: " + e);
             }
-        } while (!quit);
-        return answer;
+        } while (true);
     }
 
     private static void lenghtChar(int r) throws LengthCharException {
@@ -109,24 +88,21 @@ public class Entrance {
     }
 
     public static String valueString(String message) {
-        boolean quit = false;
-        String resp = "";
+
         do {
-            resp = readKeystrokesString(message);
+            String resp = readKeystrokesString(message);
             if (resp.isBlank()) {
                 System.out.println("Empty inputs are wrong.");
             } else {
-                quit = true;
+                return resp;
             }
-        } while (!quit);
-        return resp;
+        } while (true);
     }
 
     public static boolean valueBoolean(String message) throws IllegalArgumentException {
-        boolean quit = false;
-        char resp = ' ';
+
         do {
-            resp = Character.toUpperCase(valueChar(message));
+            char resp = Character.toUpperCase(valueChar(message));
             switch (resp) {
                 case 'Y':
                 case 'T':
@@ -138,37 +114,29 @@ public class Entrance {
                 default:
                     throw new IllegalArgumentException("Error: only valid answers: 'S', 'N', 'Y', 'N', 'T', 'F'.");
             }
-        } while (!quit);
+        } while (true);
     }
 
     public static int valueIntNonException(String message) {
-        boolean quit = false;
-        String resp = "";
+
         do {
-            resp = readKeystrokesString(message);
+            String resp = readKeystrokesString(message);
             if (resp.isBlank()) {
                 System.out.println("Empty inputs are wrong.");
             } else if (isNumber(resp)) {
-                quit = true;
+                return Integer.parseInt(resp);
             }
-        } while (!quit);
-
-        return Integer.parseInt(resp);
+        } while (true);
     }
 
     public static String readKeystrokesString(String message) {
-        System.out.println(message);
-        String resp = sc.nextLine();
 
-        return resp;
+        System.out.println(message);
+        return sc.nextLine();
     }
 
     public static boolean isNumber(String resp) {
-        if (resp.matches("\\d+")) {
-            // If it is a number, exit the program.
-            return true;
-        }
 
-        return false;
+        return (resp.matches("\\d+")) ? true : false;
     }
 }

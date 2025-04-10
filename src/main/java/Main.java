@@ -26,5 +26,7 @@ public class Main {
         q.destroyWorld();
 
         q.ScannerClose();
+
+        System.out.println("Bye....");
     }
 }
